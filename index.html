@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title> Find a Number </title>
+	</head>
+	<body>
+
+			<div id="log"></div>
+
+	<script> 
+
+//Vars
+failCount=0;
+position=0;
+
+//Find this number	
+num=1; 
+
+//Group Number
+allnum = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,37,50,55,60,63,67,71,72,75,80,81,85,87]; 
+
+do{
+
+	//divide the group in two
+	count=parseInt(allnum.length/2); 
+
+	if(allnum[count] < num){
+
+		//print info
+		document.getElementById('log').innerHTML += (num +' is Bigger '+allnum[count]+' <br> '+allnum+'<br><br>');
+		
+		//odd, even
+		if( allnum.length & 1){ 	
+			position=position+parseInt(allnum.length/2);
+		 }else{ 
+			position=position+parseInt(allnum.length/2)+1;
+		 }
+
+		allnum=allnum.slice(count,allnum.length);
+	
+	}else{	
+		document.getElementById('log').innerHTML += (num +' is Smaller '+allnum[count]+' <br> '+allnum+'<br><br>');	
+		allnum=allnum.slice(0,count);
+	}
+
+	count=parseInt(allnum.length/2);
+
+}while(allnum[count]!=num);
+
+// Final Mensage:
+position = position + parseInt(allnum.length/2);
+document.getElementById('log').innerHTML += "<br>The number: " +  num + " is on Position: " + position;
+
+	</script>
+	</body>
+</html>
